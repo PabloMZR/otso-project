@@ -54,6 +54,7 @@ export class EmployeesService {
     })
     return employeeToUpdate;
   }
+  //comenzamos aqui!
   remove(id: number) {
     this.employees = this.employees.filter((employee) => employee.id !== id);
   return this.employees;    
