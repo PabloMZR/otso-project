@@ -49,6 +49,7 @@ export class EmployeesService {
     }
     this.employees = this.employees.map((employee) => {
       if (employee.id === id) {
+        employee = employeeToUpdate;
       }
       return employee;
     })
