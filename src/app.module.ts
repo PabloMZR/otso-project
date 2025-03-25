@@ -4,27 +4,21 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmployeesModule } from './employees/employees.module';
 import { ProductsModule } from './products/products.module';
-import * as dotenv from 'dotenv';
-dotenv.config();
-
-console.log('DB_HOST:', process.env.host);
-console.log('DB_PORT:', process.env.port);
-console.log('DB_NAME:', process.env.name);
-console.log('DB_PASS:', process.env.pass);
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: "postgres",
-      host: "localhost",
-      port: 5432,
+      type: 'postgres',
+      host: process.env.host,
+      port: Number(process.env.port),
       username: 'postgres',
-      password: "kakita420",
-      database: "otso_db",
+      password: "NotocarPassword",
+      database: process.env.name,
       entities: [],
       synchronize: true,
-    }), EmployeesModule, ProductsModule],
+    }),
+    EmployeesModule, ProductsModule],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}
